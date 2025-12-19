@@ -14,6 +14,10 @@ jobs:
   build:
     name: Build Next.js Application
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
 
     steps:
       - name: Checkout Repository
@@ -35,10 +39,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Lowercase Repo Owner
+      - name: Lowercase Repo Slug
         run: |
-          echo "REPO_OWNER=${OWNER,,}" >> ${GITHUB_ENV}
+          echo "REPO_SLUG=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
         env:
-          OWNER: '${{ github.repository_owner }}'
-      - name: Push Docker Image to GitHub Container Registry
-        run: docker tag portfolio ghcr.io/${{ github.repository_owner }}/portfolio:latest && docker push ghcr.io/${{ github.repository_owner }}/portfolio:latest
+          GITHUB_REPOSITORY: '${{ github.repository }}'
+      - name: Push Docker image to GitHub Container Registry
+        run: |
+          docker tag portfolio ghcr.io/${{ env.REPO_SLUG }}:latest
+          docker push ghcr.io/${{ env.REPO_SLUG }}:latest

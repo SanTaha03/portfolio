@@ -1,7 +1,11 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#263202",
-        "titleBar.activeBackground": "#364603",
+        "activityBar.background": "#ffffff",
+        "titleBar.activeBackground": "#ffffff",
         "titleBar.activeForeground": "#F5FEDC"
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "https-sonarqube-taha-tadil-mds-nantes-fr-",
+        "projectKey": "SanTaha03_portfolio_1809d87d-09c7-4796-9616-d5c32ab8541b"
     }
 }

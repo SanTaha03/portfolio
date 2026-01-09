@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { Mail, MapPin, Send } from "lucide-react"
 
 export function Contact() {
